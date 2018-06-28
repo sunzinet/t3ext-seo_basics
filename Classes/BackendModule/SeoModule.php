@@ -150,11 +150,11 @@ class SeoModule extends \TYPO3\CMS\Backend\Module\AbstractFunctionModule {
 			$content .= BackendUtility::getFuncCheck($id, 'SET[hideShortcuts]', $this->pObj->MOD_SETTINGS['hideShortcuts'], '', '', 'id="SET[hideShortcuts]"');
 			$content .= '<label for="SET[hideShortcuts]">Hide Shortcuts</label>&nbsp;&nbsp;';
 			$content .= BackendUtility::getFuncCheck($id, 'SET[hideDisabled]', $this->pObj->MOD_SETTINGS['hideDisabled'], '', '', 'id="SET[hideDisabled]"');
-			$content .= '<label for="SET[hideDisabled]">Hide Disabled Pages</label>&nbsp;&nbsp;<br/>'; 
+			$content .= '<label for="SET[hideDisabled]">Hide Disabled Pages</label>&nbsp;&nbsp;<br/>';
 			$content .= BackendUtility::getFuncCheck($id, 'SET[hideSysFolders]', $this->pObj->MOD_SETTINGS['hideSysFolders'], '', '', 'id="SET[hideSysFolders]"');
-			$content .= '<label for="SET[hideSysfolders]">Hide System Folders</label>&nbsp;&nbsp;<br/>'; 	
+			$content .= '<label for="SET[hideSysfolders]">Hide System Folders</label>&nbsp;&nbsp;<br/>';
 			$content .= BackendUtility::getFuncCheck($id, 'SET[hideNotInMenu]', $this->pObj->MOD_SETTINGS['hideNotInMenu'], '', '', 'id="SET[hideNotInMenu]"');
-			$content .= '<label for="SET[hideNotInMenu]">Hide Not in menu</label>&nbsp;&nbsp;<br/>'; 				
+			$content .= '<label for="SET[hideNotInMenu]">Hide Not in menu</label>&nbsp;&nbsp;<br/>';
 
 			// Save previous editing when submit was hit
 			$this->saveChanges();
@@ -240,7 +240,7 @@ class SeoModule extends \TYPO3\CMS\Backend\Module\AbstractFunctionModule {
 			}
 			if ($hideNotInMenu && $item['nav_hide'] == 1) {
 				continue;
-			}			
+			}
 			if ($hideSysFolders && $item['doktype'] == 254) {
 				continue;
 			}
@@ -254,7 +254,7 @@ class SeoModule extends \TYPO3\CMS\Backend\Module\AbstractFunctionModule {
 				$item['sys_language'] = 0;
 
 				// see if a specific language (and not the default one) is chosen
-				// overwrite the default values, 
+				// overwrite the default values,
 				if ($this->langOnly) {
 					if (!is_array($translations[$this->langOnly])) continue;
 					$item['uid'] 		 = $translations[$this->langOnly]['uid'];
@@ -285,7 +285,7 @@ class SeoModule extends \TYPO3\CMS\Backend\Module\AbstractFunctionModule {
 			}
 
 			$tRows = $this->renderRowContent($item, $rowTitle);
-	
+
 			// compile row
 			foreach ($tRows as $singleRow) {
 				$output .= '<tr>' . implode('', $singleRow) . '</tr>';
@@ -369,7 +369,7 @@ class SeoModule extends \TYPO3\CMS\Backend\Module\AbstractFunctionModule {
 
 
 	/**
-	 * This function loads all language overlays that exist for pages 
+	 * This function loads all language overlays that exist for pages
 	 * an local array
 	 * @param array $uidList The Page Uids
 	 * @return void
@@ -424,7 +424,7 @@ class SeoModule extends \TYPO3\CMS\Backend\Module\AbstractFunctionModule {
 
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'page_id, language_id, pagepath',
-			'tx_realurl_pathcache',
+			'tx_realurl_pathdata',
 			'page_id IN ('. $uidList .') ' . $where,
 			'',
 			'language_id ASC, expire ASC'
